@@ -1,5 +1,5 @@
 body {
-  margin-top: 2em;
+  margin-top: 0em;
   padding: 1em;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -8,10 +8,15 @@ a {
   color: #00B7FF;
 }
 
+li {
+  list-style: none;
+  margin-bottom: 1em
+}
+
 .main-window {
   border-radius: 10px;
   box-shadow: 2px 2px 7px rgba(50, 50, 50, 0.6);
-  height: 100%;
+  height: 80%;
 }
 
 .sidebar {
@@ -45,6 +50,7 @@ a {
   border-radius: 0px 10px 0px 0px;
   overflow: scroll;
   height: 100% !important;
+  position: relative;
 }
 
 .chat-window-header {
@@ -69,22 +75,42 @@ a {
 
 #new-message {
   background: #efefef;
-  padding: 0
+  padding: 0;
+  bottom: 0;
 }
 
 #new-message.row {
-  padding: 0em;
+  padding: 1em 0;
+  width: 100%;
+
 }
 
-#new-message textarea {
-  margin: 0;
-  border-radius: 5px;
-}
 
 #new-message input {
   width: 100%;
   padding: 0.75em;
   border-radius: 5px;
+  margin-bottom: 0;
+}
+
+button {
+  padding: 0.6em;
+  width: 100%;
+  margin-bottom: 0;
+  border-radius: 5px;
+}
+
+::-webkit-input-placeholder {
+    color: #bababa;
+}
+:-moz-placeholder {
+  color: #bababa;
+}
+::-moz-placeholder {
+  color: #bababa;
+}
+:-ms-input-placeholder {
+  color: #bababa;
 }
 
 footer {
@@ -101,11 +127,8 @@ footer p {
   color: #666;
 }
 
-@media (max-width: 1024px) {
-  #new-message textarea {
-    margin-bottom: 1em;
-  }
 
+@media (max-width: 1024px) {
   #new-message input {
     width: 100%;
   }
@@ -114,6 +137,7 @@ footer p {
 @media (max-width: 640px) {
   .sidebar {
     border-radius: 10px 10px 0px 0px;
+    height: 46px !important;
   }
 
   .sidebar .sidebar-header {
@@ -121,7 +145,7 @@ footer p {
   }
 
   .chat-window {
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
   }
 
   .chat-window-header {
@@ -131,4 +155,10 @@ footer p {
   #new-message .large-2.columns {
     border-radius: 10px
   }
+
+  #new-message.row .columns {
+    margin-bottom: 1em;
+  }
+
+
 }
