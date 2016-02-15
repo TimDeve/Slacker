@@ -7,6 +7,7 @@ var app            = express();
 var http           = require('http').createServer(app);
 var io             = require('socket.io').listen(http);
 var cookieParser   = require('cookie-parser')
+var giphy          = require('giphy-api-without-credentials')();
 
 
 var routes = require('./routes/index');
@@ -68,7 +69,15 @@ io.on('connection', function(socket){
   });
 
   socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+    console.log(msg)
+    giphy.search(msg, function(err, res) {
+
+        var id = res.data[0].id
+        var img = "https://media.giphy.com/media/" + id + "/giphy.gif"
+        console.log(img)
+        var el = "<li><img src='" + img + "'></li>"
+        io.emit('chat message', el);
+    });
   });
 });
 
