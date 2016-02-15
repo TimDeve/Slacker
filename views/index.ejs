@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <title><%= title %></title>
@@ -8,19 +8,53 @@
     <script src="/javascripts/foundation.min.js"></script>
     <script type="text/javascript" src="/app/app.js"></script>
     <script type="text/javascript" src="/app/controllers/messagesController.js"></script>
-    <link rel='stylesheet' href='/stylesheets/foundation.min.css' />
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='/stylesheets/foundation.min.css'>
+    <link rel='stylesheet' href='/stylesheets/style.css'>
   </head>
   <body>
-    <div class="row main-window">
-      <div class="medium-3 columns sidebar">
-        <p>This is the sidebar</p>
-        <p>Here are all the people you can chat with </p>
+    <div class="row main-window" data-equalizer>
+      <div class="medium-3 columns sidebar" data-equalizer-watch>
+        <div class="sidebar-header">
+          <h2>SLACKER</h2>
+        </div>
+        <div class="sidebar-content">
+          <p>Here are all the people you can chat with </p>
+        </div>
       </div>
-      <div class="medium-9 columns chat-window">
-        Here is the chat
+
+      <div class="medium-9 columns chat-window" data-equalizer-watch>
+        <div class="chat-window-header">
+          <h2>Main chat</h2>
+        </div>
+        <div class="main-chat">
+          <p>Here is the chat</p>
+
+        
+        </div> <!-- End of main chat -->
+        <div id="new-message">
+          <!-- <div class="row"> -->
+            <div class="large-10 columns">
+              <textarea placeholder="Gif yourself away..."></textarea>
+            </div>
+            <div class="large-2 columns">
+              <input type="submit" class="button" value="Send">
+            </div>
+          <!-- </div> -->
+        </div>
       </div>
+      <footer>
+        <div class="row">
+          <div class="medium-12 columns">
+          <p>&#169; Team Coffee 24hr Hackathon 2016</p>
+          </div>
+        </div>
+      </footer>
     </div>
+
+    <script>
+      $(document).foundation();
+    </script>
 
   </body>
 </html>

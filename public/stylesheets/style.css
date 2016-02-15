@@ -1,5 +1,6 @@
 body {
-  padding: 50px;
+  margin-top: 2em;
+  padding: 1em;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -7,10 +8,126 @@ a {
   color: #00B7FF;
 }
 
+.main-window {
+  border-radius: 10px;
+  box-shadow: 2px 2px 7px rgba(50, 50, 50, 0.6);
+}
+
 .sidebar {
-  background: #7C4294;
+  background: #4d394b;
+  color: #f5f5f5;
+  padding: 0;
+  border-radius: 10px 0px 0px 0px;
+}
+
+.sidebar .sidebar-header {
+  background: #291A28;
+  padding: 0.25em 0.75em;
+  border-radius: 10px 0px 0px 0px;
+}
+
+.sidebar .sidebar-header h2 {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  color: white;
+  font-size: 2em;
+  margin: 0em;
+}
+
+.sidebar .sidebar-content {
+  padding: 0.25em 0.75em;
 }
 
 .chat-window {
-  background: #eee;
+  background: #f5f5f5;
+  padding: 0;
+  border-radius: 0px 10px 0px 0px;
 }
+
+.chat-window-header {
+  background: #bdbdbd;
+  padding: 0.25em 1em;
+  border-radius: 0px 10px 0px 0px;
+}
+
+.chat-window-header h2 {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 2em;
+  font-family: 'Ubuntu Condensed', sans-serif;
+  text-align: center;
+  color: #555;
+}
+
+.main-chat {
+  padding: 1em;
+}
+
+#new-message {
+  background: #efefef;
+  padding: 0
+}
+
+#new-message.row {
+  padding: 0em;
+}
+
+#new-message textarea {
+  margin: 0;
+  border-radius: 5px;
+}
+
+#new-message input {
+  width: 100%;
+  padding: 0.75em;
+  border-radius: 5px;
+}
+
+footer {
+  display: block;
+  background: #cecece;
+  border-radius: 10px;
+}
+
+footer p {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  margin: 1em 0;
+  color: #666;
+}
+
+@media (max-width: 1024px) {
+  #new-message textarea {
+    margin-bottom: 1em;
+  }
+
+  #new-message input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .sidebar {
+    border-radius: 10px 10px 0px 0px;
+  }
+
+  .sidebar .sidebar-header {
+    border-radius: 10px 10px 0px 0px; 
+  }
+
+  .chat-window {
+    border-radius: 10px;
+  }
+
+  .chat-window-header {
+    border-radius: 0px;
+  }
+
+  #new-message .large-2.columns {
+    border-radius: 10px
+  }
+}
+
+
+
+
