@@ -7,15 +7,14 @@ body {
 a {
   color: #00B7FF;
 }
-zq
+
 li {
   list-style: none;
   margin-bottom: 1em
 }
 
-li {
-  list-style: none;
-  margin-bottom: 1em
+li img {
+  width: 50%;
 }
 
 .main-window {
@@ -98,6 +97,18 @@ li {
   margin-bottom: 0;
 }
 
+form#messageForm > * {
+  display: inline-block;
+}
+
+form#messageForm input {
+width: 65%;
+}
+
+form#messageForm button {
+width: 30%;
+}
+
 button {
   padding: 0.6em;
   width: 100%;
@@ -164,10 +175,12 @@ footer p {
   #new-message.row .columns {
     margin-bottom: 1em;
   }
+  ul {
 
+  margin-left: 0;
+  }
 
-<<<<<<< HEAD
+  li img {
+    width: 100%;
+  }
 }
-=======
-}
->>>>>>> 9a2730d43593997964f8e52c3ff99b1f4b2801cc

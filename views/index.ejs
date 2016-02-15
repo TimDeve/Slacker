@@ -40,13 +40,11 @@
       </div>      <!-- End of .medium-9.columns.chat-window -->
      </div>        <!-- End of .row.main-window -->
      <div id="new-message" class="row">
-       <div class="medium-9 columns">
+       <div class="medium-12 columns">
          <form id="messageForm" ng-submit="mess.sendMessage()">
            <input id="m" autocomplete="off" ng-model="mess.message">
+           <button>Send</button>
          </form>
-       </div>
-       <div class="medium-3 columns">
-         <button>Send</button>
        </div>
      </div>
     <script>
