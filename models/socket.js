@@ -15,14 +15,16 @@ module.exports = function(io) {
     socket.on('chat message', function(msg){
 
       var historyFile = __dirname + "/../public/history.json"
-      var history = {}
+      var history = []
 
       if (fs.existsSync(historyFile)) {
         history = jsonfile.readFileSync(historyFile)
+        if (history.length > 1000) history = []
       }
 
-      function writeHistory(newObj) {
-        jsonfile.writeFile(historyFile, newObj, function (err) {
+      function writeHistory(newObj, newHistory) {
+        newHistory.push(newObj)
+        jsonfile.writeFile(historyFile, newHistory, function (err) {
           console.error(err)
         })
       }
@@ -36,7 +38,7 @@ module.exports = function(io) {
           data: msg.message,
           search: "Typed it's own gif"
         }
-        writeHistory(obj)
+        writeHistory(obj, history)
         io.emit('chat message', obj);
       }
       else {
@@ -49,7 +51,7 @@ module.exports = function(io) {
               data: "There was no result",
               search: "searched for: " + msg.message
             }
-            writeHistory(obj)
+            writeHistory(obj, history)
             io.emit('chat message', obj);
           }
           else {
@@ -62,7 +64,7 @@ module.exports = function(io) {
               data: url,
               search: "searched for: " + msg.message
             }
-            writeHistory(obj)
+            writeHistory(obj, history)
             io.emit('chat message', obj);
           }
 

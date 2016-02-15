@@ -2,8 +2,8 @@ angular
   .module('giphyMessenger')
   .controller('messagesController', messagesController);
 
-messagesController.$inject = ['$scope']
-function messagesController($scope){
+messagesController.$inject = ['$scope', '$http']
+function messagesController($scope, $http){
 
   var self = this
 
@@ -18,9 +18,15 @@ function messagesController($scope){
   self.sendMessage = sendMessage
   self.user = 'Guest' + shortDate
 
+  $http.get('/history.json').success(function(data) {
+      self.all = data
+  })
+
   socket.on('chat message', function(msg){
     self.all.push(msg)
     $scope.$apply()
+
+    $('#scrollingdiv').animate({scrollTop: $("#childscrollingdiv").height()}, 800, 'swing');
   });
 
 
@@ -37,5 +43,8 @@ function messagesController($scope){
     }
   }
 
+  window.setTimeout(function() {
+    $('#scrollingdiv').animate({scrollTop: $("#childscrollingdiv").height()}, 800, 'swing');
+  }, 1000)
 
 }

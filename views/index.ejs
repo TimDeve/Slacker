@@ -32,8 +32,8 @@
         </div>
       </div>
 
-      <div class="medium-9 columns chat-window">
-        <div class="main-chat">
+      <div class="medium-9 columns chat-window" id="scrollingdiv">
+        <div class="main-chat" id="childscrollingdiv">
           <ul id="messages">
             <li ng-repeat="message in mess.all">
               <h5>{{message.user}} {{message.search}}</h5>
