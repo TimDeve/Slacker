@@ -5,6 +5,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
     <script src="https://cdn.rawgit.com/gdi2290/angular-websocket/v1.0.9/angular-websocket.min.js"></script>
     <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/foundation.min.js"></script>
     <link rel='stylesheet' href='/stylesheets/foundation.min.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="/socket.io/socket.io.js"></script>
@@ -13,10 +14,9 @@
     <script type="text/javascript" src="/app/app.js"></script>
     <script type="text/javascript" src="/app/controllers/messagesController.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
-
-
   </head>
   <body>
+
     <div class="row main-window" data-equalizer>
       <div class="medium-3 columns sidebar" data-equalizer-watch>
         <div class="sidebar-header">
@@ -27,21 +27,27 @@
         </div>
       </div>
 
-      <div class="medium-9 columns chat-window">
-        <ul id="messages"></ul>
-        <form id="messageForm">
-          <input id="m" autocomplete="off" /><button>Send</button>
-        </form>
+      <div class="medium-9 columns chat-window"  data-equalizer-watch>
+        <div class="chat-window-header">
+          <h2>Main chat</h2>
+        </div>
 
-      </div>
-      <footer>
-        <div class="row">
-          <div class="medium-12 columns">
-          <p>&#169; Team Coffee 24hr Hackathon 2016</p>
+        <div class="main-chat">
+          <ul id="messages"></ul>
+        </div> 
+
+        <div id="new-message">
+          <div class="small-9 columns">
+            <form id="messageForm">
+              <input id="m" autocomplete="off" />
+            </form>
+          </div>
+          <div class="small-2 columns end">
+            <button>Send</button>
           </div>
         </div>
-      </footer>
-    </div>
+      </div>      <!-- End of .medium-9.columns.chat-window -->
+     </div>        <!-- End of .row.main-window -->
 
     <script>
       $(document).foundation();
