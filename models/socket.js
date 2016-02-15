@@ -9,24 +9,39 @@ module.exports = function(io) {
     });
 
     socket.on('chat message', function(msg){
+      var obj = {}
 
-      if (msg.substr(msg.length - 3, msg.length) === "gif") {
-        obj = {error: false, data: msg}
+      if (msg.message.substr(msg.message.length - 4, msg.message.length) === ".gif") {
+        obj = {
+          user: msg.user,
+          error: false,
+          data: msg.message,
+          search: "Typed it's own gif"
+        }
         io.emit('chat message', obj);
       }
       else {
-        giphy.search(msg, function(err, res) {
-          var obj
+        giphy.search(msg.message, function(err, res) {
 
           if (res.data.length === 0) {
-            obj = {error: true, data: "There is no result for " + msg}
+            obj = {
+              user: msg.user,
+              error: true,
+              data: "There was no result",
+              search: "searched for: " + msg.message
+            }
             io.emit('chat message', obj);
           }
           else {
             var pick = _.random(res.data.length - 1)
             var id = res.data[pick].id
             var url = "https://media.giphy.com/media/" + id + "/giphy.gif"
-            obj = {error: false, data: url}
+            obj = {
+              user: msg.user,
+              error: false,
+              data: url,
+              search: "searched for: " + msg.message
+            }
             io.emit('chat message', obj);
           }
 

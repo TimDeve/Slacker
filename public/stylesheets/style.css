@@ -153,6 +153,7 @@ p.footer  {
   margin: 0;
   padding: 1em 0;
   color: #666;
+
 }
 
 
@@ -215,6 +216,9 @@ p.footer  {
     padding: 0 !important;
   }
 
+}
 
-
+#nick {
+   font-size: 12px;
+   color: mediumpurple;
 }

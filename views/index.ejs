@@ -27,6 +27,8 @@
         </div>
         <div class="sidebar-content">
           <p>The best part about Slack </p>
+          <br>
+          <p id="nick">If you want a nickname just write: /nick NAME</p>
         </div>
       </div>
 
@@ -34,8 +36,9 @@
         <div class="main-chat">
           <ul id="messages">
             <li ng-repeat="message in mess.all">
+              <h5>{{message.user}} {{message.search}}</h5>
               <span ng-if="message.error">{{message.data}}</span>
-              <img src="{{message.data}}" alt="" ng-if="!message.error">
+              <img ng-src="{{message.data}}" alt="" ng-if="!message.error">
             </li>
           </ul>
         </div> 
