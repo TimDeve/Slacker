@@ -6,6 +6,8 @@
     <script src="/javascripts/foundation.min.js"></script>
     <link rel='stylesheet' href='/stylesheets/foundation.min.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/app/app.js"></script>
   </head>
   <body>
     <div class="row main-window">
@@ -14,9 +16,11 @@
         <p>Here are all the people you can chat with </p>
       </div>
       <div class="medium-9 columns chat-window">
-        Here is the chat
+        <ul id="messages"></ul>
+        <form id="messageForm">
+          <input id="m" autocomplete="off" /><button>Send</button>
+        </form>
       </div>
     </div>
-
   </body>
 </html>

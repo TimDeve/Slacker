@@ -2,7 +2,7 @@ var socket = io();
 
 $(document).ready(function() {
 
-  $('form').submit(function(event){
+  $('#messageForm').submit(function(event){
     event.preventDefault()
     socket.emit('chat message', $('#m').val());
     $('#m').val('');
@@ -10,7 +10,15 @@ $(document).ready(function() {
   });
 
   socket.on('chat message', function(msg){
-    $('#messages').append(msg);
+    var el
+    if (msg.error) {
+      el = "<li>" + msg.data + "</li>"
+      $('#messages').append(el);
+    }
+    else {
+      el = "<li><img src='" + msg.data + "'></li>"
+      $('#messages').append(el);
+    }
   });
 
 })
