@@ -30,11 +30,6 @@ module.exports = function(io) {
             io.emit('chat message', obj);
           }
 
-          // var id = res.data[0].id
-          // var img = "https://media.giphy.com/media/" + id + "/giphy.gif"
-          // console.log(img)
-          // var el = "<li><img src='" + img + "'></li>"
-          // io.emit('chat message', el);
         });
       }
     });
