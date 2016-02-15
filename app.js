@@ -8,6 +8,7 @@ var http           = require('http').createServer(app);
 var io             = require('socket.io').listen(http);
 var cookieParser   = require('cookie-parser')
 
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -58,6 +59,19 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});
+
 
 
 http.listen(app.get('port'), function() {
