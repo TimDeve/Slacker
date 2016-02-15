@@ -2,6 +2,7 @@
 <html ng-app='giphyMessenger'>
   <head>
     <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
     <script src="/javascripts/jquery.min.js"></script>
     <script src="/javascripts/foundation.min.js"></script>
@@ -17,6 +18,7 @@
   </head>
 
   <body ng-controller='messagesController as mess'>
+
 
     <div class="row main-window" data-equalizer>
       <div class="medium-3 columns sidebar" data-equalizer-watch>
@@ -43,15 +45,17 @@
       </div>      <!-- End of .medium-9.columns.chat-window -->
      </div>        <!-- End of .row.main-window -->
      <div id="new-message" class="row">
-       <div class="medium-9 columns">
+       <div class="medium-12 columns">
          <form id="messageForm" ng-submit="mess.sendMessage()">
            <input id="m" autocomplete="off" ng-model="mess.message">
+           <button>Send</button>
          </form>
        </div>
-       <div class="medium-3 columns">
-         <button>Send</button>
-       </div>
      </div>
+     <footer>
+     <p>&#169; Copyright[ish] TeamCoffee 2016</p>
+     </footer>
+
     <script>
       $(document).foundation();
     </script>
