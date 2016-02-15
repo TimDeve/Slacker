@@ -1,5 +1,6 @@
 var giphy = require('giphy-api-without-credentials')();
 var _ = require('lodash')
+var jsonfile = require('jsonfile')
 
 module.exports = function(io) {
   io.on('connection', function(socket){
