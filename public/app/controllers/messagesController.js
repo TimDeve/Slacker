@@ -22,6 +22,7 @@ function messagesController($scope){
   function sendMessage() {
      socket.emit('chat message', self.message)
      self.message = ''
+     console.log('test')
   }
 
 
