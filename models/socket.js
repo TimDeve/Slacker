@@ -11,7 +11,7 @@ module.exports = function(io) {
     socket.on('chat message', function(msg){
       var obj = {}
 
-      if (msg.message.substr(msg.message.length - 3, msg.message.length) === "gif") {
+      if (msg.message.substr(msg.message.length - 4, msg.message.length) === ".gif") {
         obj = {
           user: msg.user,
           error: false,
