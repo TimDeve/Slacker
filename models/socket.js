@@ -1,6 +1,9 @@
 var giphy = require('giphy-api-without-credentials')();
 var _ = require('lodash')
 var jsonfile = require('jsonfile')
+var util = require('util')
+var path = require('path')
+var fs = require('fs')
 
 module.exports = function(io) {
   io.on('connection', function(socket){
@@ -10,6 +13,20 @@ module.exports = function(io) {
     });
 
     socket.on('chat message', function(msg){
+
+      var historyFile = __dirname + "/../public/history.json"
+      var history = {}
+
+      if (fs.existsSync(historyFile)) {
+        history = jsonfile.readFileSync(historyFile)
+      }
+
+      function writeHistory(newObj) {
+        jsonfile.writeFile(historyFile, newObj, function (err) {
+          console.error(err)
+        })
+      }
+
       var obj = {}
 
       if (msg.message.substr(msg.message.length - 4, msg.message.length) === ".gif") {
@@ -19,6 +36,7 @@ module.exports = function(io) {
           data: msg.message,
           search: "Typed it's own gif"
         }
+        writeHistory(obj)
         io.emit('chat message', obj);
       }
       else {
@@ -31,6 +49,7 @@ module.exports = function(io) {
               data: "There was no result",
               search: "searched for: " + msg.message
             }
+            writeHistory(obj)
             io.emit('chat message', obj);
           }
           else {
@@ -43,11 +62,13 @@ module.exports = function(io) {
               data: url,
               search: "searched for: " + msg.message
             }
+            writeHistory(obj)
             io.emit('chat message', obj);
           }
 
         });
       }
+
     });
   });
 }
