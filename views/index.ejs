@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='giphyMessenger'>
   <head>
     <title><%= title %></title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
     <script src="https://cdn.rawgit.com/gdi2290/angular-websocket/v1.0.9/angular-websocket.min.js"></script>
     <script src="/javascripts/jquery.min.js"></script>
-    <link rel='stylesheet' href='/stylesheets/foundation.min.css' />
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/app/appnotangular.js"></script>
+    <script src="/javascripts/foundation.min.js"></script>
+    <link rel='stylesheet' href='/stylesheets/foundation.min.css'/>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <!-- <script src="/socket.io/socket.io.js"></script>
+    <script src="/app/appnotangular.js"></script> -->
 
     <script type="text/javascript" src="/app/app.js"></script>
     <script type="text/javascript" src="/app/controllers/messagesController.js"></script>
@@ -16,7 +17,7 @@
 
 
   </head>
-  <body>
+  <body ng-controller='messagesController as mess'>
     <div class="row main-window" data-equalizer>
       <div class="medium-3 columns sidebar" data-equalizer-watch>
         <div class="sidebar-header">
