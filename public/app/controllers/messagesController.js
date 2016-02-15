@@ -1,23 +1,28 @@
- angular.module('giphyMessenger', ['ngWebSocket'])
-        .factory('MyData', function($websocket) {
-      
-      var dataStream = $websocket('wss://website.com/data');
+angular
+  .module('giphyMessenger')
+  .controller('messagesController', messagesController);
 
-      var collection = [];
+messagesController.$inject = ['$scope']
+function messagesController($scope){
 
-      dataStream.onMessage(function(message) {
-        collection.push(JSON.parse(message.data));
-      });
+  var self = this
 
-      var methods = {
-        collection: collection,
-        get: function() {
-          dataStream.send(JSON.stringify({ action: 'get' }));
-        }
-      };
+  var socket = io()
 
-      return methods;
-    })
-    .controller('SomeController', function ($scope, MyData) {
-      $scope.MyData = MyData;
-    });
+  self.all = []
+  self.message = ''
+  self.sendMessage = sendMessage
+
+  socket.on('chat message', function(msg){
+    self.all.push(msg)
+    $scope.$apply()
+  });
+
+
+  function sendMessage() {
+     socket.emit('chat message', self.message)
+     self.message = ''
+  }
+
+
+}
