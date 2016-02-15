@@ -7,6 +7,7 @@
     <script src="/javascripts/jquery.min.js"></script>
     <script src="/javascripts/foundation.min.js"></script>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel='stylesheet' href='/stylesheets/foundation.min.css'/>
     <link rel='stylesheet' href='/stylesheets/style.css'/>
 
@@ -14,12 +15,14 @@
 
     <script type="text/javascript" src="/app/app.js"></script>
     <script type="text/javascript" src="/app/controllers/messagesController.js"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
   </head>
 
   <body ng-controller='messagesController as mess'>
 
-
+  <div id="chat">
     <div class="row main-window" data-equalizer>
       <div class="medium-3 columns sidebar" data-equalizer-watch>
         <div class="sidebar-header">
@@ -36,25 +39,26 @@
         <div class="main-chat" id="childscrollingdiv">
           <ul id="messages">
             <li ng-repeat="message in mess.all">
-              <h5>{{message.user}} {{message.search}}</h5>
-              <span ng-if="message.error">{{message.data}}</span>
+              <h5><i class="fa fa-comment-o"></i> <span>{{message.user}}</span> {{message.search}}</h5>
+              <span class="error" ng-if="message.error">{{message.data}}</span>
               <img ng-src="{{message.data}}" alt="" ng-if="!message.error">
             </li>
           </ul>
         </div> 
-      </div>      <!-- End of .medium-9.columns.chat-window -->
+      </div>       <!-- End of .medium-9.columns.chat-window -->
      </div>        <!-- End of .row.main-window -->
+     
      <div id="new-message" class="row">
        <div class="medium-12 columns">
          <form id="messageForm" ng-submit="mess.sendMessage()">
            <input id="m" autocomplete="off" ng-model="mess.message">
            <button>Send</button>
          </form>
+         <p class="footer">&#169; Copyright[ish] TeamCoffee 2016</p>
        </div>
-     </div>
-     <footer>
-     <p>&#169; Copyright[ish] TeamCoffee 2016</p>
-     </footer>
+     </div>   <!-- End of #new-message -->
+
+  </div>      <!-- end of #chat -->
 
     <script>
       $(document).foundation();
