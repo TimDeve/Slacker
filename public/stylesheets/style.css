@@ -6,3 +6,11 @@ body {
 a {
   color: #00B7FF;
 }
+
+.sidebar {
+  background: #7C4294;
+}
+
+.chat-window {
+  background: #eee;
+}

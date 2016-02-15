@@ -2,10 +2,22 @@
 <html>
   <head>
     <title><%= title %></title>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/foundation.min.js"></script>
+    <link rel='stylesheet' href='/stylesheets/foundation.min.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div class="row main-window">
+      <div class="medium-3 columns sidebar">
+        <p>This is the sidebar</p>
+        <p>Here are all the people you can chat with </p>
+      </div>
+      <div class="medium-9 columns chat-window">
+        Here is the chat
+      </div>
+    </div>
+
   </body>
 </html>
+
