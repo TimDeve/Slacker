@@ -2,26 +2,27 @@ angular
   .module('giphyMessenger')
   .controller('messagesController', messagesController);
 
-messagesController.$inject = ['$websocket'];
-function messagesController($websocket){
+messagesController.$inject = ['$scope']
+function messagesController($scope){
 
   var self = this
 
-  var dataStream = $websocket();
+  var socket = io()
 
-  var collection = [];
+  self.all = []
+  self.message = ''
+  self.sendMessage = sendMessage
 
-  dataStream.onMessage(function(message) {
-    collection.push(JSON.parse(message.data));
+  socket.on('chat message', function(msg){
+    self.all.push(msg)
+    $scope.$apply()
   });
 
-  var methods = {
-    collection: collection,
-    get: function() {
-      dataStream.send(JSON.stringify({ action: 'get' }));
-    }
-  };
 
-  self.MyData = methods
+  function sendMessage() {
+     socket.emit('chat message', self.message)
+     self.message = ''
+  }
+
 
 }

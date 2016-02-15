@@ -3,13 +3,13 @@
   <head>
     <title><%= title %></title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-    <script src="https://cdn.rawgit.com/gdi2290/angular-websocket/v1.0.9/angular-websocket.min.js"></script>
+    <!-- <script src="https://cdn.rawgit.com/gdi2290/angular-websocket/v1.0.9/angular-websocket.min.js"></script> -->
     <script src="/javascripts/jquery.min.js"></script>
     <script src="/javascripts/foundation.min.js"></script>
     <link rel='stylesheet' href='/stylesheets/foundation.min.css'/>
     <link rel='stylesheet' href='/stylesheets/style.css'/>
-    <!-- <script src="/socket.io/socket.io.js"></script>
-    <script src="/app/appnotangular.js"></script> -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- <script src="/app/appnotangular.js"></script> -->
 
     <script type="text/javascript" src="/app/app.js"></script>
     <script type="text/javascript" src="/app/controllers/messagesController.js"></script>
@@ -29,9 +29,15 @@
       </div>
 
       <div class="medium-9 columns chat-window">
-        <ul id="messages"></ul>
-        <form id="messageForm">
-          <input id="m" autocomplete="off" /><button>Send</button>
+        <ul id="messages">
+          <li ng-repeat="message in mess.all">
+            <span ng-if="message.error">{{message.data}}</span>
+            <img src="{{message.data}}" alt="" ng-if="!message.error">
+          </li>
+        </ul>
+        <form id="messageForm" ng-submit="mess.sendMessage()">
+          <input id="m" autocomplete="off" ng-model="mess.message">
+          <button>Send</button>
         </form>
 
       </div>
