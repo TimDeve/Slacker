@@ -1,57 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='giphyMessenger'>
   <head>
     <title><%= title %></title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-    <script src="https://cdn.rawgit.com/gdi2290/angular-websocket/v1.0.9/angular-websocket.min.js"></script>
     <script src="/javascripts/jquery.min.js"></script>
     <script src="/javascripts/foundation.min.js"></script>
-    <link rel='stylesheet' href='/stylesheets/foundation.min.css' />
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <link rel='stylesheet' href='/stylesheets/foundation.min.css'/>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/app/appnotangular.js"></script>
 
     <script type="text/javascript" src="/app/app.js"></script>
     <script type="text/javascript" src="/app/controllers/messagesController.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
   </head>
-  <body>
 
-  <div class="row main-window" data-equalizer>
-    <div class="medium-3 columns sidebar" data-equalizer-watch>
-      <div class="sidebar-header">
-        <h2>SLACKER</h2>
+  <body ng-controller='messagesController as mess'>
+
+    <div class="row main-window" data-equalizer>
+      <div class="medium-3 columns sidebar" data-equalizer-watch>
+        <div class="sidebar-header">
+          <h2>SLACKER</h2>
+        </div>
+        <div class="sidebar-content">
+          <p>The best part about Slack </p>
+        </div>
       </div>
-      <div class="sidebar-content">
-        <p>Here are all the people you can chat with </p>
-      </div>
-    </div>
 
-    <div class="medium-9 columns chat-window"  data-equalizer-watch>
-      <div class="chat-window-header">
-        <h2>Main chat</h2>
-      </div>
-      <div class="main-chat">
-        <ul id="messages"></ul>
-      </div> 
-    </div>      <!-- End of .medium-9.columns.chat-window -->
-  </div>   <!-- End of .row.main-window -->
-  
-  <div id="new-message" class="row">
-    <div class="medium-9 columns">
-      <form id="messageForm">
-        <input id="m" autocomplete="off" placeholder="Gif" />
-      </form>
-    </div>
-    <div class="medium-3 columns">
-      <button>Send</button>
-    </div>
-  </div>
-
-
-  <script>
-    $(document).foundation();
-  </script>
+      <div class="medium-9 columns chat-window">
+        <div class="main-chat">
+          <ul id="messages">
+            <li ng-repeat="message in mess.all">
+              <span ng-if="message.error">{{message.data}}</span>
+              <img src="{{message.data}}" alt="" ng-if="!message.error">
+            </li>
+          </ul>
+        </div> 
+      </div>      <!-- End of .medium-9.columns.chat-window -->
+     </div>        <!-- End of .row.main-window -->
+     <div id="new-message" class="row">
+       <div class="medium-9 columns">
+         <form id="messageForm" ng-submit="mess.sendMessage()">
+           <input id="m" autocomplete="off" ng-model="mess.message">
+         </form>
+       </div>
+       <div class="medium-3 columns">
+         <button>Send</button>
+       </div>
+     </div>
+    <script>
+      $(document).foundation();
+    </script>
 
   </body>
 </html>

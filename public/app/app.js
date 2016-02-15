@@ -1,2 +1,2 @@
 angular
-   .module('giphyMessenger', ['ngWebSocket'])
+   .module('giphyMessenger', [])

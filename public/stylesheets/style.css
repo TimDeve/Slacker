@@ -7,6 +7,11 @@ body {
 a {
   color: #00B7FF;
 }
+zq
+li {
+  list-style: none;
+  margin-bottom: 1em
+}
 
 li {
   list-style: none;
@@ -161,4 +166,8 @@ footer p {
   }
 
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 9a2730d43593997964f8e52c3ff99b1f4b2801cc
