@@ -1,26 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <title><%= title %></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/gdi2290/angular-websocket/v1.0.9/angular-websocket.min.js"></script>
     <script src="/javascripts/jquery.min.js"></script>
-    <script src="/javascripts/foundation.min.js"></script>
     <link rel='stylesheet' href='/stylesheets/foundation.min.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/app/app.js"></script>
+    <script src="/app/appnotangular.js"></script>
+
+    <script type="text/javascript" src="/app/app.js"></script>
+    <script type="text/javascript" src="/app/controllers/messagesController.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+
   </head>
   <body>
-    <div class="row main-window">
-      <div class="medium-3 columns sidebar">
-        <p>This is the sidebar</p>
-        <p>Here are all the people you can chat with </p>
+    <div class="row main-window" data-equalizer>
+      <div class="medium-3 columns sidebar" data-equalizer-watch>
+        <div class="sidebar-header">
+          <h2>SLACKER</h2>
+        </div>
+        <div class="sidebar-content">
+          <p>Here are all the people you can chat with </p>
+        </div>
       </div>
+
       <div class="medium-9 columns chat-window">
         <ul id="messages"></ul>
         <form id="messageForm">
           <input id="m" autocomplete="off" /><button>Send</button>
         </form>
+
       </div>
+      <footer>
+        <div class="row">
+          <div class="medium-12 columns">
+          <p>&#169; Team Coffee 24hr Hackathon 2016</p>
+          </div>
+        </div>
+      </footer>
     </div>
+
+    <script>
+      $(document).foundation();
+    </script>
+
   </body>
 </html>
