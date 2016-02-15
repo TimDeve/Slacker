@@ -9,27 +9,34 @@ module.exports = function(io) {
     });
 
     socket.on('chat message', function(msg){
-      giphy.search(msg, function(err, res) {
-        var obj
 
-        if (res.data.length === 0) {
-          obj = {error: true, data: "There is no result for " + msg}
-          io.emit('chat message', obj);
-        }
-        else {
-          var pick = _.random(res.data.length - 1)
-          var id = res.data[pick].id
-          var url = "https://media.giphy.com/media/" + id + "/giphy.gif"
-          obj = {error: false, data: url}
-          io.emit('chat message', obj);
-        }
+      if (msg.substr(msg.length - 3, msg.length) === "gif") {
+        obj = {error: false, data: msg}
+        io.emit('chat message', obj);
+      }
+      else {
+        giphy.search(msg, function(err, res) {
+          var obj
 
-        // var id = res.data[0].id
-        // var img = "https://media.giphy.com/media/" + id + "/giphy.gif"
-        // console.log(img)
-        // var el = "<li><img src='" + img + "'></li>"
-        // io.emit('chat message', el);
-      });
+          if (res.data.length === 0) {
+            obj = {error: true, data: "There is no result for " + msg}
+            io.emit('chat message', obj);
+          }
+          else {
+            var pick = _.random(res.data.length - 1)
+            var id = res.data[pick].id
+            var url = "https://media.giphy.com/media/" + id + "/giphy.gif"
+            obj = {error: false, data: url}
+            io.emit('chat message', obj);
+          }
+
+          // var id = res.data[0].id
+          // var img = "https://media.giphy.com/media/" + id + "/giphy.gif"
+          // console.log(img)
+          // var el = "<li><img src='" + img + "'></li>"
+          // io.emit('chat message', el);
+        });
+      }
     });
   });
 }
