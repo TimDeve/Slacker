@@ -36,7 +36,7 @@ module.exports = function(io) {
           user: msg.user,
           error: false,
           data: msg.message,
-          search: "send it's own gif"
+          search: "sent it's own gif"
         }
         writeHistory(obj, history)
         io.emit('chat message', obj);
