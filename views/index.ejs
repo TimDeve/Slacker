@@ -51,7 +51,7 @@
      <div id="new-message" class="row">
        <div class="medium-12 columns">
          <form id="messageForm" ng-submit="mess.sendMessage()">
-           <input id="m" autocomplete="off" ng-model="mess.message">
+           <input id="m" autocomplete="off" ng-model="mess.message" placeholder="As {{mess.user}}">
            <button>Send</button>
          </form>
          <p class="footer">&#169; Copyright[ish] TeamCoffee 2016</p>
