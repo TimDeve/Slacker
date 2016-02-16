@@ -19,7 +19,7 @@ module.exports = function(io) {
 
       if (fs.existsSync(historyFile)) {
         history = jsonfile.readFileSync(historyFile)
-        if (history.length > 1000) history = []
+        if (history.length > 300) history = []
       }
 
       function writeHistory(newObj, newHistory) {

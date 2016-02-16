@@ -23,6 +23,7 @@ function messagesController($scope, $http){
   })
 
   socket.on('chat message', function(msg){
+    if (self.all.length > 300) self.all.shift()
     self.all.push(msg)
     $scope.$apply()
 
