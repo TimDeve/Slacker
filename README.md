@@ -13,4 +13,4 @@ I had wanted to work with websocket for a bit and so a messaging app seemed to b
  The basic functionality was build in a few hours and we just spent the rest of the day adding things we thought were funny (/nick functionality, posting gif with a url, storing history in a json file...).
 
 ## Where?
-There is hosted version [here](slacker.do.timdeve.com).
+There is hosted version [here](http://slacker.do.timdeve.com).
